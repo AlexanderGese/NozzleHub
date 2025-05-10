@@ -1,20 +1,39 @@
-# Use official Node.js LTS image
-FROM node:18
+# Stage 1: Build
+FROM node:18-alpine AS builder
+
+# Install pnpm
+RUN npm install -g pnpm
 
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json first
-COPY package*.json ./
+# Copy only necessary files first (for better cache)
+COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
-RUN npm install
+RUN pnpm install
 
-# Copy the rest of the project
+# Copy all source files
 COPY . .
 
-# Expose port 4321
+# Build the site
+RUN pnpm build
+
+
+# Stage 2: Run — lightweight production image
+FROM node:18-alpine
+
+# Install pnpm (required for preview)
+RUN npm install -g pnpm
+
+# Set working directory
+WORKDIR /app
+
+# Copy built files and pnpm dependencies
+COPY --from=builder /app /app
+
+# Expose the port Astro uses
 EXPOSE 4321
 
-# Start the Astro dev server
-CMD ["npm", "run", "dev"]
+# Run Astro preview server
+CMD ["pnpm", "preview", "--host", "--port", "4321"]
