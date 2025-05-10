@@ -2,23 +2,14 @@
 import Layout from '@layouts/Default.astro';
 import RecentBlogPosts from '@components/generic/RecentBlogPosts.astro';
 import MobileSocials from '@components/home/MobileSocials.astro';
-import { Pill } from '@eliancodes/brutal-ui';
-import { Button } from '@eliancodes/brutal-ui';
-import { Card } from '@eliancodes/brutal-ui';
-//import EmailList from '../components/EmailList.astro';
+import { Pill, Button, Card } from '@eliancodes/brutal-ui';
 
 const builtWith = [
   { name: 'Prusa Research', url: 'https://www.prusa3d.com' },
   { name: 'Creality', url: 'https://creality.com' },
-  {
-    name: 'Anycubic',
-    url: 'https://www.anycubic.com',
-  },
+  { name: 'Anycubic', url: 'https://www.anycubic.com' },
   { name: 'Elegoo', url: 'https://www.elegoo.com' },
-  {
-    name: 'Ultimaker',
-    url: 'https://www.ultimaker.com',
-  },
+  { name: 'Ultimaker', url: 'https://www.ultimaker.com' },
 ];
 ---
 
@@ -38,8 +29,7 @@ const builtWith = [
               A blog for honest ratings about <a
                 class='text-white'
                 target='_blank'
-                href='https://astro.build/'>3d Printers / Filament</a
-              >
+                href='https://astro.build/'>3d Printers / Filament</a>
             </p>
             <p class='mt-2 outfit text-xl md:text-3xl lg:text-5xl'>
               We support most of the most popular companies
@@ -82,12 +72,21 @@ const builtWith = [
           </h2>
           <p class='poppins'>
             Because we hate biased opinion<a
-              href='https://www.alexander-gese.com'></a
-            >
+              href='https://www.alexander-gese.com'></a>
           </p>
         </Card>
       </div>
     </section>
     <RecentBlogPosts />
   </main>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PXCRQN2YM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0PXCRQN2YM');
+  </script>
 </Layout>
+

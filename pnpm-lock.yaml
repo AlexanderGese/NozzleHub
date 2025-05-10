@@ -26,6 +26,9 @@ dependencies:
   astro-font:
     specifier: ^0.0.80
     version: 0.0.80
+  deploy:
+    specifier: ^1.0.3
+    version: 1.0.3
   satori:
     specifier: ^0.5.0
     version: 0.5.0
@@ -2793,6 +2796,11 @@ packages:
 
   /defu@6.1.4:
     resolution: {integrity: sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==}
+
+  /deploy@1.0.3:
+    resolution: {integrity: sha512-muJVK8p8idCiE+8JaQzvGD+vS3KtoJYx6jLu0Bq36vl7bOJVpm9dZGgoHFi89kI88oHdwa32TUTZ0exYyT0KLQ==}
+    hasBin: true
+    dev: false
 
   /dequal@2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
