@@ -23,6 +23,7 @@
     "@astrojs/vercel": "^8.1.4",
     "@eliancodes/brutal-ui": "^0.2.3",
     "@unocss/astro": "^66.1.0-beta.12",
+    "@vercel/analytics": "^1.5.0",
     "astro": "^5.6.1",
     "astro-font": "^0.0.80",
     "deploy": "^1.0.3",
