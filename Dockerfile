@@ -1,39 +1,22 @@
-# Stage 1: Build
-FROM node:18-alpine AS builder
+# Install dependencies and build the site
+FROM node:20-alpine AS builder
+WORKDIR /app
 
 # Install pnpm
 RUN npm install -g pnpm
 
-# Set working directory
-WORKDIR /app
-
-# Copy only necessary files first (for better cache)
-COPY package.json pnpm-lock.yaml ./
-
-# Install dependencies
-RUN pnpm install
-
-# Copy all source files
 COPY . .
-
-# Build the site
+RUN pnpm install --frozen-lockfile
 RUN pnpm build
 
-
-# Stage 2: Run — lightweight production image
-FROM node:18-alpine
-
-# Install pnpm (required for preview)
-RUN npm install -g pnpm
-
-# Set working directory
+# Serve built site using Astro's preview command
+FROM node:20-alpine AS runner
 WORKDIR /app
 
-# Copy built files and pnpm dependencies
+RUN npm install -g pnpm
 COPY --from=builder /app /app
 
-# Expose the port Astro uses
 EXPOSE 4321
 
-# Run Astro preview server
+# Use preview (not dev!)
 CMD ["pnpm", "preview", "--host", "--port", "4321"]
