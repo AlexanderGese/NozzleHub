@@ -1,0 +1,62 @@
+---
+import Layout from '@layouts/Default.astro';
+import { Card } from '@eliancodes/brutal-ui';
+
+---
+
+<Layout title="Contact Us" description="Get in touch with Nozzle Hub">
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    <h1 class="text-4xl font-bold mb-8 dm-serif">Contact Us</h1>
+    
+    <Card>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-2xl font-bold mb-4">Get in Touch</h2>
+          <p class="mb-4">Have questions about 3D printing? Want to suggest a topic? We'd love to hear from you!</p>
+          
+          <div class="space-y-4">
+            <h3 class="text-xl font-semibold">Connect with us:</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="https://twitter.com/DevLsx" class="flex items-center gap-2 hover:text-blue">
+                  <div class="i-uil-twitter w-6 h-6"></div>
+                  <span>Follow us on Twitter</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/alexandergese" class="flex items-center gap-2 hover:text-blue">
+                  <div class="i-uil-github w-6 h-6"></div>
+                  <span>Find us on GitHub</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/alexander-gese" class="flex items-center gap-2 hover:text-blue">
+                  <div class="i-uil-linkedin w-6 h-6"></div>
+                  <span>Connect on LinkedIn</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold mb-4">Quick Links</h2>
+          <ul class="space-y-2">
+            <li>
+              <a href="/blog/" class="hover:text-blue">Blog Posts</a>
+            </li>
+            <li>
+              <a href="/feed.xml" class="hover:text-blue">RSS Feed</a>
+            </li>
+            <li>
+              <a href="/privacy-policy" class="hover:text-blue">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="/terms" class="hover:text-blue">Terms of Use</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </Card>
+  </main>
+</Layout>

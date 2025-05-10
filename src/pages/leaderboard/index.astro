@@ -1,0 +1,829 @@
+---
+import Layout from '@layouts/Default.astro';
+import { Card } from '@eliancodes/brutal-ui';
+
+const printers = [
+  {
+    name: "Creality Halot Mage Pro 8K",
+    score: 7.6,
+    review: ""
+  },
+  {
+    name: "Elegoo Neptune 4",
+    score: 7.6,
+    review: ""
+  },
+  {
+    name: "FLSUN Super Racer",
+    score: 7.2,
+    review: ""
+  },
+  {
+    name: "Creality K1C",
+    score: 7.87,
+    review: ""
+  },
+  {
+    name: "Vorron 0.2",
+    score: 7.93,
+    review: ""
+  },
+  {
+    name: "BCN3D Epsilon W27",
+    score: 8.07,
+    review: ""
+  },
+  {
+    name: "Creality K1",
+    score: 7.53,
+    review: ""
+  },
+  {
+    name: "Creality Halot Mage S 14K",
+    score: 7.9,
+    review: ""
+  },
+  {
+    name: "Formlabs Form 3BL",
+    score: 7.93,
+    review: ""
+  },
+  {
+    name: "Elegoo Neptune 3 Max",
+    score: 7.46,
+    review: ""
+  },
+  {
+    name: "NinjaTek",
+    score: 8.0,
+    review: ""
+  },
+  {
+    name: "Creality Ender 3 S1 Plus",
+    score: 7.6,
+    review: ""
+  },
+  {
+    name: "Formlabs Form 3B",
+    score: 7.86,
+    review: ""
+  },
+  {
+    name: "FlashForge Guider 3 Plus",
+    score: 7.53,
+    review: ""
+  },
+  {
+    name: "Ultimaker S3",
+    score: 8.13,
+    review: ""
+  },
+  {
+    name: "AnkerMake M5C",
+    score: 7.73,
+    review: ""
+  },
+  {
+    name: "Uniformation GKTwo",
+    score: 7.5,
+    review: ""
+  },
+  {
+    name: "Creality Ender 3 V3",
+    score: 7.2,
+    review: ""
+  },
+  {
+    name: "Voxeljet VX 2000",
+    score: 7.2,
+    review: ""
+  },
+  {
+    name: "Anycubic Kobra Max",
+    score: 7.4,
+    review: ""
+  },
+  {
+    name: "LulzBot TAZ Pro",
+    score: 8.07,
+    review: ""
+  },
+  {
+    name: "FlashForge Adventurer 5M",
+    score: 7.83,
+    review: ""
+  },
+  {
+    name: "Snapmaker Artisan",
+    score: 7.67,
+    review: ""
+  },
+  {
+    name: "Kudo3D Titan 2 HR",
+    score: 7.8,
+    review: ""
+  },
+  {
+    name: "LulzBot TAZ",
+    score: 7.93,
+    review: ""
+  },
+  {
+    name: "Formlabs Form 3",
+    score: 8.07,
+    review: ""
+  },
+  {
+    name: "Zortrax Inventure",
+    score: 7.53,
+    review: ""
+  },
+  {
+    name: "Makerbote Method X",
+    score: 7.6,
+    review: ""
+  },
+  {
+    name: "Zortrax Endural",
+    score: 7.73,
+    review: ""
+  },
+  {
+    name: "LulzBot TAZ Workhorse",
+    score: 7.9,
+    review: ""
+  },
+  {
+    name: "Formlabs Form 1Plus",
+    score: 6.53,
+    review: ""
+  },
+  {
+    name: "Snapmaker 2.0 A350T",
+    score: 7.47,
+    review: ""
+  },
+  {
+    name: "Elegoo Saturn 4 Ultra",
+    score: 8.37,
+    review: ""
+  },
+  {
+    name: "Elegoo Neptune 4 Pro",
+    score: 7.9,
+    review: ""
+  },
+  {
+    name: "Sindoh 3DWOX - DP200",
+    score: 7.47,
+    review: ""
+  },
+  {
+    name: "Phrozen Sonic Mega 8K",
+    score: 7.87,
+    review: ""
+  },
+  {
+    name: "Elegoo Neptune 3",
+    score: 7.3,
+    review: ""
+  },
+  {
+    name: "QIDI i Fast",
+    score: 7.87,
+    review: ""
+  },
+  {
+    name: "AnkerMake M8",
+    score: 8.23,
+    review: ""
+  },
+  {
+    name: "Snapmaker J1",
+    score: 7.73,
+    review: ""
+  },
+  {
+    name: "QIDI X CF Pro",
+    score: 7.87,
+    review: ""
+  },
+  {
+    name: "Cellink BIO X",
+    score: 7.6,
+    review: ""
+  },
+  {
+    name: "Hyrel 3D Engine",
+    score: 7.4,
+    review: ""
+  },
+  {
+    name: "Anycubic Kobra 2",
+    score: 7.13,
+    review: ""
+  },
+  {
+    name: "Makerbot Replicator",
+    score: 6.46,
+    review: ""
+  },
+  {
+    name: "BCN3D Sigma D25",
+    score: 8.06,
+    review: ""
+  },
+  {
+    name: "Elegoo Neptune 4 Max",
+    score: 7.9,
+    review: ""
+  },
+  {
+    name: "Creality CR - 10",
+    score: 7.07,
+    review: ""
+  },
+  {
+    name: "Snapmaker 2.0 A250T",
+    score: 7.53,
+    review: ""
+  },
+  {
+    name: "Creality Ender 3 S1",
+    score: 7.87,
+    review: ""
+  },
+  {
+    name: "Anycubic Kobra Go",
+    score: 7.07,
+    review: ""
+  },
+  {
+    name: "Creality Sermoon V1",
+    score: 7.33,
+    review: ""
+  },
+  {
+    name: "Creality K1 Max",
+    score: 7.87,
+    review: ""
+  },
+  {
+    name: "Anycubic Photon Mono M7 Pro",
+    score: 8.07,
+    review: ""
+  },
+  {
+    name: "Zortrax M200 Plus",
+    score: 7.47,
+    review: ""
+  },
+  {
+    name: "Creality Ender 5 S1",
+    score: 7.77,
+    review: ""
+  },
+  {
+    name: "Phrozen Shuffle XL",
+    score: 7.33,
+    review: ""
+  },
+  {
+    name: "Fusion 3 EDGE",
+    score: 8.27,
+    review: ""
+  },
+  {
+    name: "Anycubic Kobra Ultra",
+    score: 7.33,
+    review: ""
+  },
+  {
+    name: "Makerbot Cupcake CNC",
+    score: 5.07,
+    review: ""
+  },
+  {
+    name: "Voxeljet VX1000",
+    score: 7.73,
+    review: ""
+  },
+  {
+    name: "Ultimaker 2 Plus",
+    score: 7.63,
+    review: ""
+  },
+  {
+    name: "Airwolf 3D HD2x",
+    score: 7.21,
+    review: ""
+  },
+  {
+    name: "Voron 2.4",
+    score: 7.9,
+    review: ""
+  },
+  {
+    name: "Prusa MK3S+",
+    score: 8.6,
+    review: ""
+  },
+  {
+    name: "Zortrax M300 Plus",
+    score: 7.7,
+    review: ""
+  },
+  {
+    name: "QIDI Plus4",
+    score: 7.4,
+    review: ""
+  },
+  {
+    name: "Solidoodle 4",
+    score: 5.73,
+    review: ""
+  },
+  {
+    name: "Fusion3 F400",
+    score: 8.53,
+    review: ""
+  },
+  {
+    name: "FLSUN Q5",
+    score: 7.13,
+    review: ""
+  },
+  {
+    name: "Creality Ender 3 V2",
+    score: 7.47,
+    review: ""
+  },
+  {
+    name: "Prusa MINIPlus",
+    score: 8.26,
+    review: ""
+  },
+  {
+    name: "Voron 0.1",
+    score: 8.1,
+    review: ""
+  },
+  {
+    name: "LulzBot Mini 2",
+    score: 8.26,
+    review: ""
+  },
+  {
+    name: "Hyrel 3D System 30",
+    score: 7.8,
+    review: ""
+  },
+  {
+    name: "Sindoh 3dWOX 1",
+    score: 7.86,
+    review: ""
+  },
+  {
+    name: "FLSUN V400",
+    score: 7.2,
+    review: ""
+  },
+  {
+    name: "Ultimaker S7",
+    score: 8.13,
+    review: ""
+  },
+  {
+    name: "Creality CR30",
+    score: 6.5,
+    review: ""
+  },
+  {
+    name: "Creality CR M4",
+    score: 7.6,
+    review: ""
+  },
+  {
+    name: "Autodesk Ember",
+    score: 5.6,
+    review: ""
+  },
+  {
+    name: "QIDI Tech X Max",
+    score: 7.47,
+    review: ""
+  },
+  {
+    name: "Creality Ender S1 Pro",
+    score: 7.73,
+    review: ""
+  },
+  {
+    name: "Elegoo Saturn 3 Ultra",
+    score: 8.17,
+    review: ""
+  },
+  {
+    name: "Airwolf 3D Axiom",
+    score: 7.47,
+    review: ""
+  },
+  {
+    name: "Phrozen Sonic Mini 8K",
+    score: 7.6,
+    review: ""
+  },
+  {
+    name: "FLSUN QQ 5 Pro",
+    score: 6.93,
+    review: ""
+  },
+  {
+    name: "Anycubic Photon Mono X 6K",
+    score: 7.07,
+    review: ""
+  },
+  {
+    name: "Uniformation GKOne",
+    score: 7.77,
+    review: ""
+  },
+  {
+    name: "Fusion3 F410",
+    score: 8.2,
+    review: ""
+  },
+  {
+    name: "The Buccaneer 3d Printer",
+    score: 6.13,
+    review: ""
+  },
+  {
+    name: "Kudo3D Titan 2",
+    score: 7.43,
+    review: ""
+  },
+  {
+    name: "AnkerMake M7",
+    score: 7.93,
+    review: ""
+  },
+  {
+    name: "Phrozen Sonic Mighty 8K",
+    score: 7.5,
+    review: ""
+  },
+  {
+    name: "LulzBot Bio",
+    score: 7.4,
+    review: ""
+  },
+  {
+    name: "Voron Trident",
+    score: 8.63,
+    review: ""
+  },
+  {
+    name: "Makerbot Replicator Plus Desktop 3D Printer",
+    score: 7.07,
+    review: ""
+  },
+  {
+    name: "Creality CR10 SE",
+    score: 7.47,
+    review: ""
+  },
+  {
+    name: "Entina Tina2",
+    score: 5.47,
+    review: ""
+  },
+  {
+    name: "Creality Halot One Plus",
+    score: 7.43,
+    review: ""
+  },
+  {
+    name: "Prusa MK4S",
+    score: 8.87,
+    review: ""
+  },
+  {
+    name: "Prusa XL",
+    score: 8.9,
+    review: ""
+  },
+  {
+    name: "Prusa MK4",
+    score: 8.33,
+    review: ""
+  },
+  {
+    name: "Anycubic Photon M3 Premium",
+    score: 7.67,
+    review: ""
+  },
+  {
+    name: "Voxeljet VX200",
+    score: 7.27,
+    review: ""
+  },
+  {
+    name: "Elegoo Saturn 3",
+    score: 6.4,
+    review: ""
+  },
+  {
+    name: "BCN3D Epsilon W50",
+    score: 8.13,
+    review: ""
+  },
+  {
+    name: "Makerbot Replicator 2",
+    score: 5.73,
+    review: ""
+  },
+  {
+    name: "Sindoh 3DWOX 2X",
+    score: 7.53,
+    review: ""
+  },
+  {
+    name: "FlashForge Foto 8.9s",
+    score: 7.47,
+    review: ""
+  },
+  {
+    name: "envisionTEC Perfactory Apolloo",
+    score: 7.47,
+    review: ""
+  },
+  {
+    name: "Elegoo Saturn 4",
+    score: 7.67,
+    review: ""
+  },
+  {
+    name: "Elegoo Saturn 2",
+    score: 8.1,
+    review: ""
+  },
+  {
+    name: "Voxeljet VX4000",
+    score: 6.93,
+    review: ""
+  },
+  {
+    name: "Raise3D Pro3",
+    score: 8.33,
+    review: ""
+  },
+  {
+    name: "Makerbot Method XL",
+    score: 7.86,
+    review: ""
+  },
+  {
+    name: "Prusa Core 1",
+    score: 7.05,
+    review: ""
+  },
+  {
+    name: "Anycubic Photon Mono 2",
+    score: 7.33,
+    review: ""
+  },
+  {
+    name: "Raise3D E2CF",
+    score: 7.8,
+    review: ""
+  },
+  {
+    name: "3D Systems ProJet 1200",
+    score: 6.07,
+    review: ""
+  },
+  {
+    name: "Anycubic Vyper",
+    score: 7.53,
+    review: ""
+  },
+  {
+    name: "Formlabs Form 2",
+    score: 7.43,
+    review: ""
+  },
+  {
+    name: "3D Systems Cube Pro",
+    score: 5.73,
+    review: ""
+  },
+  {
+    name: "Elegoo Mars 4 Ultra",
+    score: 8.07,
+    review: ""
+  },
+  {
+    name: "CandyFab 4000",
+    score: 4.4,
+    review: ""
+  },
+  {
+    name: "Solidoodle 2",
+    score: 5.07,
+    review: ""
+  },
+  {
+    name: "Formlabs Form 3 Plus",
+    score: 7.8,
+    review: ""
+  },
+  {
+    name: "CandyFab 6000",
+    score: 4.7,
+    review: ""
+  },
+  {
+    name: "FlashForge Finder 3",
+    score: 7.13,
+    review: ""
+  },
+  {
+    name: "Phorzen Transform",
+    score: 7.67,
+    review: ""
+  },
+  {
+    name: "Anycubic Kobra Neo",
+    score: 6.93,
+    review: ""
+  },
+  {
+    name: "Creality Sermoon D3",
+    score: 7.27,
+    review: ""
+  },
+  {
+    name: "envisionTEC Micro Plus Hi Res",
+    score: 6.67,
+    review: ""
+  },
+  {
+    name: "Creality CR10 Smart Pro",
+    score: 7.6,
+    review: ""
+  },
+  {
+    name: "Ultimaker Method X",
+    score: 7.93,
+    review: ""
+  },
+  {
+    name: "Solidoodle 3",
+    score: 5.33,
+    review: ""
+  },
+  {
+    name: "CandyFab 6000",
+    score: 5.2,
+    review: ""
+  },
+  {
+    name: "Formlabs Form 1",
+    score: 6.67,
+    review: ""
+  },
+  {
+    name: "Formlabs Form 3L",
+    score: 7.87,
+    review: ""
+  },
+  {
+    name: "Voron Switchwire",
+    score: 7.67,
+    review: ""
+  },
+  {
+    name: "AnkerMake M5",
+    score: 8.47,
+    review: ""
+  },
+  {
+    name: "Elegoo Mars 5 Ultra",
+    score: 7.87,
+    review: ""
+  },
+  {
+    name: "Elegoo Jupiter",
+    score: 7.53,
+    review: ""
+  },
+  {
+    name: "FlashForge Creator 4",
+    score: 4.9,
+    review: ""
+  },
+  {
+    name: "Ultimaker S5",
+    score: 8.13,
+    review: ""
+  },
+  {
+    name: "3D Systems Cube",
+    score: 4.73,
+    review: ""
+  },
+  {
+    name: "3D Systems ChefJet Pro",
+    score: 5.3,
+    review: ""
+  },
+  {
+    name: "Phrozen Sonic Mini 4K",
+    score: 7.46,
+    review: ""
+  },
+  {
+    name: "Raise3D Pro3 Plus",
+    score: 8.46,
+    review: ""
+  },
+  {
+    name: "Raise3D E2",
+    score: 7.73,
+    review: ""
+  },
+  {
+    name: "FlashForge Hunter",
+    score: 6.33,
+    review: ""
+  },
+  {
+    name: "Ultimaker 2 Plus Connect",
+    score: 7.73,
+    review: ""
+  },
+  {
+    name: "Creality K3 Plus Combo",
+    score: 7.6,
+    review: ""
+  },
+  {
+    name: "be3D DeeRed Ember",
+    score: 7.4,
+    review: ""
+  },
+  {
+    name: "Fusion3 F306",
+    score: 7.86,
+    review: ""
+  },
+  {
+    name: "Elegoo Neptune 3 Plus",
+    score: 8.06,
+    review: ""
+  },
+  {
+    name: "Voron 1.8",
+    score: 7.9,
+    review: ""
+  },
+  {
+    name: "Ultimaker 3",
+    score: 7.73,
+    review: ""
+  },
+
+];
+
+// Sort printers by score in descending order
+const sortedPrinters = [...printers].sort((a, b) => b.score - a.score);
+---
+
+<Layout title="3D Printer Leaderboard" description="Top rated 3D printers">
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <h1 class="text-4xl font-bold mb-8 dm-serif">3D Printer Leaderboard</h1>
+    
+    <div class="grid gap-6">
+      {sortedPrinters.map((printer, index) => (
+        <Card>
+          <div class="flex flex-col md:flex-row justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-4 mb-2">
+                <span class="text-2xl font-bold">#{index + 1}</span>
+                <h2 class="text-2xl font-bold">{printer.name}</h2>
+              </div>
+              <p class="text-gray-700">{printer.review}</p>
+            </div>
+            <div class="flex items-start">
+              <div class="bg-black text-white px-4 py-2 rounded-lg">
+                <span class="text-2xl font-bold">{printer.score.toFixed(1)}</span>
+                <span class="text-sm">/10</span>
+              </div>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,17 @@
+[
+  {
+    "email": "user1@example.com",
+    "name": "Alice Smith",
+    "subscription_date": "2023-10-26"
+  },
+  {
+    "email": "user2@example.com",
+    "name": "Bob Johnson",
+    "subscription_date": "2023-10-27"
+  },
+  {
+    "email": "user3@example.com",
+    "name": "Charlie Brown",
+    "subscription_date": "2023-10-28"
+  }
+]

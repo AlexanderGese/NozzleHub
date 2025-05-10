@@ -1,0 +1,135 @@
+---
+export interface Props {
+  backToTop?: boolean;
+}
+
+const { backToTop = false } = Astro.props;
+
+const currentYear = new Date().getFullYear();
+
+// Get all blog tags dynamically
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const tags = [...new Set(posts.flatMap(post => post.data.tags))];
+
+const footerLinks = {
+  'Quick Links': [
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blog/' },
+    { name: 'RSS Feed', url: '/feed.xml' }
+  ],
+  'Popular Topics': tags.slice(0, 4).map(tag => ({
+    name: tag,
+    url: `/blog/tags/${tag.toLowerCase()}/`
+  })),
+  'Connect': [
+    { name: 'GitHub', url: 'https://github.com/alexandergese' },
+    { name: 'Twitter', url: 'https://x.com/DevLsx' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/alexander-gese' }
+  ]
+};
+---
+
+{
+  backToTop && (
+    <button
+      class:list={[
+        backToTop ? `backToTop` : null,
+        'transition-300 z-50 opacity-0 fixed flex bottom-[10px] right-[30px] w-10 h-10 bg-white border border-black card-shadow',
+      ]}
+    >
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        fill='none'
+        viewBox='0 0 24 24'
+        height='100%'
+        width='100%'
+        stroke-width='1.5'
+        stroke='currentColor'
+      >
+        <path
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          d='m4.5 15.75 7.5-7.5 7.5 7.5'
+        />
+      </svg>
+    </button>
+  )
+}
+
+<footer class="bg-black text-white">
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        Object.entries(footerLinks).map(([category, links]) => (
+          <div>
+            <h3 class="text-xl font-bold mb-4 outfit">{category}</h3>
+            <ul class="space-y-2">
+              {links.map((link) => (
+                <li>
+                  <a
+                    href={link.url}
+                    class="hover:text-blue transition-colors duration-200 poppins"
+                    target={link.url.startsWith('http') ? '_blank' : '_self'}
+                    rel={link.url.startsWith('http') ? 'noopener noreferrer' : ''}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-gray-800">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="outfit mb-4 md:mb-0">
+          © {currentYear} Nozzle Hub. Created by <a
+            href='https://www.alexander-gese.com'
+            target='_blank'
+            class='text-blue hover:underline'
+          >
+            Alex
+          </a>
+        </p>
+        <div class="flex space-x-6">
+          <a href="/privacy-policy" class="hover:text-blue transition-colors duration-200 poppins">Privacy Policy</a>
+          <a href="/terms" class="hover:text-blue transition-colors duration-200 poppins">Terms of Use</a>
+          <a href="/contact" class="hover:text-blue transition-colors duration-200 poppins">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .backToTop.active {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const backToTop = document.querySelector('.backToTop');
+
+    const toggleBackToTopButton = () => {
+      if (window.scrollY > 250) {
+        backToTop?.classList.add('active');
+      } else {
+        backToTop?.classList.remove('active');
+      }
+    };
+
+    backToTop?.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+
+    window.addEventListener('scroll', toggleBackToTopButton);
+  });
+</script>
