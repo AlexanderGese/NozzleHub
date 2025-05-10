@@ -1,5 +1,9 @@
-export default {
+import { defineConfig } from 'vite'
+
+export default defineConfig({
   preview: {
-    allowedHosts: ['tc8cc80w0g4k4w8ggsg80wwk.cloudcircut.tech', 'all'],
+    allowedHosts: 'all',
+    host: true,
+    port: 4321
   }
-}
+})
