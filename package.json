@@ -5,13 +5,13 @@
   "type": "module",
   "packageManager": "pnpm@8.6.0",
   "author": {
-    "name": "Elian Van Cutsem",
-    "email": "hello@elian.codes",
-    "url": "https://www.elian.codes/"
+    "name": "Alexander Gese",
+    "email": "contact@alexander-gese.com",
+    "url": "https://www.alexander-gese.com"
   },
-  "homepage": "https://brutal.elian.codes",
+  "homepage": "https://nozzlehub.com",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
