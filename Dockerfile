@@ -1,22 +1,21 @@
-# Install dependencies and build the site
+#dependencies and build the site
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Install pnpm
-RUN npm install -g pnpm
-
+COPY package*.json ./
+RUN npm install
 COPY . .
-RUN pnpm install --frozen-lockfile
-RUN pnpm build
+RUN npm run build
 
 # Serve built site using Astro's preview command
 FROM node:20-alpine AS runner
 WORKDIR /app
 
-RUN npm install -g pnpm
-COPY --from=builder /app /app
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
 
 EXPOSE 4321
 
 # Use preview (not dev!)
-CMD ["pnpm", "preview", "--host", "--port", "4321"]
+CMD ["npm", "run", "preview"]
