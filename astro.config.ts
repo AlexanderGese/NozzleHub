@@ -5,7 +5,7 @@ import UnoCSS from 'unocss/astro';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'http://localhost:3000',
+  site: 'nozzlehub.cloudcircut.tech',
   trailingSlash: 'ignore',
   integrations: [sitemap(), UnoCSS({ injectReset: true })],
 
