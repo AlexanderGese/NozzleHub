@@ -1,31 +1,20 @@
-# Stage 1: Build the application
-FROM node:20-alpine as builder
+# Use official Node.js LTS image
+FROM node:18
 
+# Set working directory
 WORKDIR /app
 
-# Copy package files
+# Copy package.json and package-lock.json first
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm install
 
-# Copy source code
+# Copy the rest of the project
 COPY . .
 
-# Build the application
-RUN npm run build
+# Expose port 4321
+EXPOSE 4321
 
-# Stage 2: Serve the application
-FROM nginx:alpine
-
-# Copy the built assets from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80
-EXPOSE 80
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Start the Astro dev server
+CMD ["npm", "run", "dev"]
